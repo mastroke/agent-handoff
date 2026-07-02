@@ -67,6 +67,42 @@ With the paid procurement template pack:
 agent-handoff report results.json --pack -o handoff-report.md
 ```
 
+## Example acceptance report
+
+Running the bundled `examples/agency-handoff/scenarios.yaml` produces a JSON verdict and a Markdown sign-off artifact. Two scenarios intentionally fail so you can see layer-level attribution before client delivery:
+
+```markdown
+# Agent Handoff Acceptance Report
+
+**Project:** agency-demo-agent
+**Overall verdict:** FAIL
+
+## Summary
+
+1/3 scenarios passed. Handoff blocked until failing layers are remediated.
+
+## Scenario results
+
+| Scenario | Verdict | Failed layers |
+| --- | --- | --- |
+| tool-schema-drift | PASS | — |
+| memory-bleed | FAIL | memory |
+| retrieval-miss | FAIL | retrieval |
+
+## Layer coverage
+
+Cross-layer baseline checks prompt, tool, memory, and retrieval behavior against golden fixtures before client sign-off.
+
+## Sign-off
+
+| Role | Name | Date | Signature |
+| --- | --- | --- | --- |
+| Delivery lead | | | |
+| Client approver | | | |
+```
+
+With `--pack`, the same results render through a procurement template that adds client metadata fields and an attestation block — see [`pack/procurement/report-template.md`](pack/procurement/report-template.md).
+
 ## Scenario format
 
 Each scenario defines expected vs actual values for all four layers:
