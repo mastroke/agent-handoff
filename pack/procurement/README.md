@@ -3,7 +3,7 @@
 Templates for AI agencies closing client builds. Pair with the OSS
 [agent-handoff](https://github.com/mastroke/agent-handoff) CLI.
 
-**Purchase:** https://mastroke.gumroad.com/l/agency-handoff-pack (listing pending)
+**Purchase:** https://mastroke.gumroad.com/l/agency-handoff-pack
 
 ## Contents
 
