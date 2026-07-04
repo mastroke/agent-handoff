@@ -69,37 +69,11 @@ agent-handoff report results.json --pack -o handoff-report.md
 
 ## Example acceptance report
 
-Running the bundled `examples/agency-handoff/scenarios.yaml` produces a JSON verdict and a Markdown sign-off artifact. Two scenarios intentionally fail so you can see layer-level attribution before client delivery:
+Running the bundled `examples/agency-handoff/scenarios.yaml` produces a JSON verdict and a Markdown sign-off artifact. Two scenarios intentionally fail so you can see layer-level attribution before client delivery.
 
-```markdown
-# Agent Handoff Acceptance Report
+**Sample report (no clone required):** [`examples/agency-handoff/sample-acceptance-report.md`](examples/agency-handoff/sample-acceptance-report.md) — rendered from [`scenarios.results.json`](examples/agency-handoff/scenarios.results.json). Overall verdict **FAIL** with `memory` and `retrieval` layer failures surfaced in the scenario table.
 
-**Project:** agency-demo-agent
-**Overall verdict:** FAIL
-
-## Summary
-
-1/3 scenarios passed. Handoff blocked until failing layers are remediated.
-
-## Scenario results
-
-| Scenario | Verdict | Failed layers |
-| --- | --- | --- |
-| tool-schema-drift | PASS | — |
-| memory-bleed | FAIL | memory |
-| retrieval-miss | FAIL | retrieval |
-
-## Layer coverage
-
-Cross-layer baseline checks prompt, tool, memory, and retrieval behavior against golden fixtures before client sign-off.
-
-## Sign-off
-
-| Role | Name | Date | Signature |
-| --- | --- | --- | --- |
-| Delivery lead | | | |
-| Client approver | | | |
-```
+For the combined behavioral + memory-governance report that agencies attach at delivery, see [agent-acceptance](https://github.com/mastroke/agent-acceptance) (this repo powers the behavioral sign-off leg).
 
 With `--pack`, the same results render through a procurement template that adds client metadata fields and an attestation block — see [`pack/procurement/report-template.md`](pack/procurement/report-template.md).
 
