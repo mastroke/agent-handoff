@@ -68,6 +68,23 @@ def test_cli_run_and_report(tmp_path, capsys):
     assert "verdict FAIL" in captured.out
 
 
+def test_sample_acceptance_report_matches_results():
+    sample = (
+        Path(__file__).resolve().parents[1]
+        / "examples"
+        / "agency-handoff"
+        / "sample-acceptance-report.md"
+    )
+    results_path = (
+        Path(__file__).resolve().parents[1]
+        / "examples"
+        / "agency-handoff"
+        / "scenarios.results.json"
+    )
+    loaded = load_results(results_path)
+    assert sample.read_text() == render_report(loaded)
+
+
 def test_pack_template_renders():
     results = run_scenarios(EXAMPLES)
     pack_template = (
